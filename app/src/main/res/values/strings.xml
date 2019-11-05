@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">HelloWorld</string>
+    <string name="orange_textView">This is an orange TextView</string>
+    <string name="green_textView">This is a green TextView</string>
+    <string name="blue_textView">This is a blue TextView</string>
+    <string name="button_string">This is a button</string>
+    <string name="editText_hint_1">This is an EditText</string>
+    <string name="editText_hint2">This is a new EditText</string>
+    <string name="notify_me">Notify me:)</string>
+    <string name="auto_backup">Auto backup</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="green_button">This is a green button</string>
 </resources>
