@@ -64,7 +64,7 @@ public class Week3SpinnerActivity extends AppCompatActivity {
 
     private ArrayAdapter<String> getAdapter(){
         return new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item,
+                android.R.layout.simple_spinner_dropdown_item,
                 dataSourceSpinner);
     }
 
