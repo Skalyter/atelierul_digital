@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/margin_std_16"
+    tools:context=".FrameLayoutActivity">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="128dp"
+        android:background="#94329c"
+        android:layout_gravity="center"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_margin="@dimen/padding_std32"
+        android:background="#7fc7c2"
+        android:layout_gravity="center"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:background="#f2d055"
+        android:layout_margin="64dp"/>
+
+</FrameLayout>
