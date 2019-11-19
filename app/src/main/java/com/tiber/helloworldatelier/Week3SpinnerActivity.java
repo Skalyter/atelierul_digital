@@ -9,23 +9,20 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Week3SpinnerActivity extends AppCompatActivity {
 
-    private Spinner spinner;
     private List<String> dataSourceSpinner;
-    private ArrayAdapter<String> adapterSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_week3_spinner);
-        spinner = findViewById(R.id.spinner);
+        Spinner spinner = findViewById(R.id.spinner);
         dataSourceSpinner = getSource();
-        adapterSpinner = getAdapter();
+        ArrayAdapter<String> adapterSpinner = getAdapter();
         spinner.setAdapter(adapterSpinner);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -42,8 +39,8 @@ public class Week3SpinnerActivity extends AppCompatActivity {
         });
     }
 
-    private List<String> getSource(){
-        List<String> androids= new ArrayList<>();
+    private List<String> getSource() {
+        List<String> androids = new ArrayList<>();
         androids.add("Cupcake");
         androids.add("Donut");
         androids.add("Eclair");
@@ -62,7 +59,7 @@ public class Week3SpinnerActivity extends AppCompatActivity {
         return androids;
     }
 
-    private ArrayAdapter<String> getAdapter(){
+    private ArrayAdapter<String> getAdapter() {
         return new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_dropdown_item,
                 dataSourceSpinner);
