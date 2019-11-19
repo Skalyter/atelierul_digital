@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HelloWorld</string>
+    <string name="app_name">Atelierul Digital</string>
     <string name="orange_textView">This is an orange TextView</string>
     <string name="green_textView">This is a green TextView</string>
     <string name="blue_textView">This is a blue TextView</string>
