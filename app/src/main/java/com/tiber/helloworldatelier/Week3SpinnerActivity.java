@@ -20,10 +20,23 @@ public class Week3SpinnerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_week3_spinner);
+
+        //create a spinner object
         Spinner spinner = findViewById(R.id.spinner);
+
+        //get data for spinner (list of Strings)
         dataSourceSpinner = getSource();
-        ArrayAdapter<String> adapterSpinner = getAdapter();
+
+        //create an ArrayAdapter with the specified layout and specified data(list of Strings)
+        ArrayAdapter<String> adapterSpinner =
+                new ArrayAdapter<>(this,
+                        android.R.layout.simple_spinner_dropdown_item,
+                        dataSourceSpinner);
+
+        //set the ArrayAdapter to the spinner
         spinner.setAdapter(adapterSpinner);
+
+        //set onItemSelectedListener
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -58,12 +71,4 @@ public class Week3SpinnerActivity extends AppCompatActivity {
 
         return androids;
     }
-
-    private ArrayAdapter<String> getAdapter() {
-        return new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_dropdown_item,
-                dataSourceSpinner);
-    }
-
-
 }
