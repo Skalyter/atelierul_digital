@@ -7,10 +7,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -27,7 +30,10 @@ public class Week4RecyclerViewActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycler_view);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(new MyCustomAdapter(getList()));
+        MyCustomAdapter adapter = new MyCustomAdapter(getList());
+        recyclerView.setAdapter(adapter);
+        adapter.addPerson(new Person("Vasile", "Vasile"));
+
     }
 
     private List<Person> getList(){
@@ -64,6 +70,13 @@ public class Week4RecyclerViewActivity extends AppCompatActivity {
             this.items = items;
         }
 
+        public void addPerson(Person person){
+            items.add(person);
+            notifyDataSetChanged();
+
+            notifyItemChanged(items.size()-1);
+        }
+
         @NonNull
         @Override
         public MyCustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -77,11 +90,35 @@ public class Week4RecyclerViewActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onBindViewHolder(@NonNull MyCustomViewHolder holder, int position) {
-            Person item  = items.get(position);
+        public void onBindViewHolder(@NonNull MyCustomViewHolder holder, final int position) {
+            final Person item  = items.get(position);
 
             holder.text_firstName.setText(item.getFirstName());
             holder.text_lastName.setText(item.getLastName());
+            holder.recyclerViewItemLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    items.add(item);
+                    notifyDataSetChanged();
+                    Toast.makeText(
+                            v.getContext(),
+                            "Item " + (position+1) + " added again",
+                            Toast.LENGTH_SHORT).show();
+                }
+            });
+            holder.remove.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    items.remove(position);
+                    notifyDataSetChanged();
+                    Toast.makeText(
+                            v.getContext(),
+                            "Item " + (position+1) + " removed",
+                            Toast.LENGTH_SHORT).show();
+                }
+            });
+
+
         }
 
         @Override
@@ -94,10 +131,14 @@ public class Week4RecyclerViewActivity extends AppCompatActivity {
     private static class MyCustomViewHolder extends RecyclerView.ViewHolder{
 
         TextView text_firstName, text_lastName;
+        Button remove;
+        View recyclerViewItemLayout;
         public MyCustomViewHolder(@NonNull View itemView) {
             super(itemView);
             text_firstName = itemView.findViewById(R.id.text_first_name);
             text_lastName = itemView.findViewById(R.id.text_last_name);
+            remove = itemView.findViewById(R.id.btn_remove_item);
+            recyclerViewItemLayout = itemView.findViewById(R.id.recycler_view_item_layout);
         }
     }
 }
