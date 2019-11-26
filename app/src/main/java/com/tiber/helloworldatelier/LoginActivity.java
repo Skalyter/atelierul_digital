@@ -35,5 +35,19 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+    }
+
+
 }
